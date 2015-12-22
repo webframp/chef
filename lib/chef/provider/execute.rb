@@ -27,7 +27,7 @@ class Chef
 
       provides :execute
 
-      def_delegators :@new_resource, :command, :returns, :environment, :user, :group, :cwd, :umask, :creates
+      def_delegators :@new_resource, :command, :returns, :environment, :user, :password, :domain, :group, :cwd, :umask, :creates
 
       def load_current_resource
         current_resource = Chef::Resource::Execute.new(new_resource.name)
@@ -92,6 +92,8 @@ class Chef
         opts[:returns]     = returns if returns
         opts[:environment] = environment if environment
         opts[:user]        = user if user
+        opts[:password]    = password if password
+        opts[:domain]      = domain if domain
         opts[:group]       = group if group
         opts[:cwd]         = cwd if cwd
         opts[:umask]       = umask if umask

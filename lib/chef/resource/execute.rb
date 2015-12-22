@@ -46,6 +46,8 @@ class Chef
         @returns = 0
         @timeout = nil
         @user = nil
+        @password = nil
+        @domain = nil
         @umask = nil
         @default_guard_interpreter = :execute
         @is_guard_interpreter = false
@@ -140,6 +142,22 @@ class Chef
           :user,
           arg,
           :kind_of => [ String, Integer ]
+        )
+      end
+
+      def password(arg=nil)
+        set_or_return(
+          :password,
+          arg,
+          :kind_of => [ String ]
+        )
+      end
+
+      def domain(arg=nil)
+        set_or_return(
+          :domain,
+          arg,
+          :kind_of => [ String ]
         )
       end
 
